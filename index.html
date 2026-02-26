@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOS KILOS — Creative Studio for Gastronomy</title>
+  <meta name="description" content="DOS KILOS is a creative studio for gastronomy. Branding, content and creative direction for chefs and food businesses. Based in Enschede, NL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Albert+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #F5F0E8;
+      --sand: #D6B588;
+      --linen: #C6C0B9;
+      --stone: #A89880;
+      --espresso: #2E1F0F;
+      --saffron: #E8920A;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      background: var(--espresso);
+      color: var(--parchment);
+      overflow-x: hidden;
+    }
+
+    /* ——— UTILITY ——— */
+    .label {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    /* ——— NAV ——— */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s ease, padding 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(46, 31, 15, 0.96);
+      padding: 16px 48px;
+      border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--parchment);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--parchment);
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-cta {
+      opacity: 1 !important;
+      border: 1px solid rgba(245, 240, 232, 0.25) !important;
+      padding: 9px 20px !important;
+      transition: border-color 0.2s ease, color 0.2s ease !important;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--saffron) !important;
+      color: var(--saffron) !important;
+    }
+
+    /* Mobile */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--espresso);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 32px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--parchment);
+      text-decoration: none;
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* ——— HERO ——— */
+    #hero {
+      min-height: 100vh;
+      background: var(--espresso);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 88px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--saffron);
+    }
+
+    .hero-tagline {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: clamp(40px, 7vw, 96px);
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+      color: var(--parchment);
+      max-width: 860px;
+      margin-bottom: 36px;
+    }
+
+    .hero-tagline em {
+      font-style: normal;
+      color: var(--saffron);
+    }
+
+    .hero-sub {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      color: var(--stone);
+      letter-spacing: 0.3px;
+      line-height: 1.6;
+      max-width: 480px;
+      margin-bottom: 56px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--saffron);
+      color: var(--espresso);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 28px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--sand);
+    }
+
+    .btn-secondary {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--parchment);
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      opacity: 1;
+    }
+
+    .hero-location {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--stone);
+      opacity: 0.4;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    /* ——— SECTIONS ——— */
+    section {
+      padding: 120px 48px;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      margin-bottom: 72px;
+    }
+
+    /* ——— STUDIO ——— */
+    #studio {
+      background: var(--parchment);
+      color: var(--espresso);
+    }
+
+    #studio .section-divider {
+      border-bottom: 1px solid rgba(46, 31, 15, 0.1);
+    }
+
+    #studio .label {
+      color: var(--saffron);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .studio-heading {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.15;
+      color: var(--espresso);
+      margin-bottom: 40px;
+    }
+
+    .studio-body p {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--espresso);
+      margin-bottom: 20px;
+      opacity: 0.75;
+    }
+
+    .studio-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .studio-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(46, 31, 15, 0.1);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(46, 31, 15, 0.1);
+    }
+
+    .stat-number {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 52px;
+      color: var(--espresso);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ——— WORKSHOPS ——— */
+    #workshops {
+      background: var(--espresso);
+      color: var(--parchment);
+    }
+
+    #workshops .section-divider {
+      border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    }
+
+    .workshops-intro p {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--stone);
+      max-width: 400px;
+      text-align: right;
+    }
+
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(245, 240, 232, 0.06);
+    }
+
+    .workshop-card {
+      background: var(--espresso);
+      padding: 44px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+
+    .workshop-card:hover {
+      background: rgba(245, 240, 232, 0.04);
+    }
+
+    .workshop-number {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--saffron);
+      margin-bottom: 24px;
+    }
+
+    .workshop-title {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--parchment);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .workshop-desc {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--stone);
+      flex: 1;
+      margin-bottom: 40px;
+    }
+
+    .workshop-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+      border-top: 1px solid rgba(245, 240, 232, 0.08);
+    }
+
+    .workshop-duration {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .workshop-link {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--saffron);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+
+    .workshop-link:hover {
+      gap: 10px;
+    }
+
+    /* ——— CONTACT ——— */
+    #contact {
+      background: var(--parchment);
+      color: var(--espresso);
+    }
+
+    #contact .section-divider {
+      border-bottom: 1px solid rgba(46, 31, 15, 0.1);
+    }
+
+    #contact .label {
+      color: var(--saffron);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .contact-intro h2 {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1;
+      color: var(--espresso);
+      margin-bottom: 24px;
+    }
+
+    .contact-intro p {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--espresso);
+      opacity: 0.65;
+      margin-bottom: 56px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-item-label {
+      display: block;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-value {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--espresso);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a.contact-item-value:hover {
+      color: var(--saffron);
+    }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(46, 31, 15, 0.15);
+      padding: 12px 0;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--espresso);
+      outline: none;
+      transition: border-color 0.2s ease;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--stone);
+      opacity: 0.5;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-bottom-color: var(--espresso);
+    }
+
+    .form-group textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    .form-group select {
+      cursor: pointer;
+      color: var(--stone);
+    }
+
+    .form-group select:valid {
+      color: var(--espresso);
+    }
+
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--espresso);
+      color: var(--parchment);
+      border: none;
+      padding: 16px 32px;
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover {
+      background: var(--saffron);
+      color: var(--espresso);
+    }
+
+    /* ——— FOOTER ——— */
+    footer {
+      background: var(--espresso);
+      padding: 48px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(245, 240, 232, 0.06);
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--stone);
+      letter-spacing: 0.5px;
+      opacity: 0.6;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 36px;
+    }
+
+    .footer-link {
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--parchment);
+    }
+
+    /* ——— RESPONSIVE ——— */
+    @media (max-width: 960px) {
+      nav {
+        padding: 20px 24px;
+      }
+
+      nav.scrolled {
+        padding: 14px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      #hero {
+        padding: 0 24px 72px;
+      }
+
+      .hero-location {
+        display: none;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      .studio-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      .workshops-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 32px;
+        align-items: flex-start;
+        padding: 48px 24px;
+      }
+
+      .footer-right {
+        gap: 24px;
+      }
+
+      .workshops-intro p {
+        text-align: left;
+      }
+
+      .section-divider {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="1.5">
+      <line x1="4" y1="4" x2="20" y2="20"/>
+      <line x1="20" y1="4" x2="4" y2="20"/>
+    </svg>
+  </button>
+  <a href="#studio" onclick="closeMobileMenu()">Studio</a>
+  <a href="#workshops" onclick="closeMobileMenu()">Workshops</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">
+    <svg width="28" height="24" viewBox="0 0 90 80">
+      <circle cx="32" cy="38" r="24" fill="#F5F0E8"/>
+      <circle cx="64" cy="48" r="15" fill="#E8920A"/>
+    </svg>
+    <span class="nav-wordmark">DOS KILOS</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="menu-btn" id="menu-btn" aria-label="Open menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="1.5">
+      <line x1="3" y1="8" x2="21" y2="8"/>
+      <line x1="3" y1="16" x2="21" y2="16"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+  <div>
+    <p class="hero-eyebrow">Creative studio for gastronomy</p>
+    <h1 class="hero-tagline">Ideas with weight.<br>Work with <em>purpose.</em></h1>
+    <p class="hero-sub">Branding, content and creative direction for chefs, restaurants and food businesses.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get in touch →</a>
+      <a href="#workshops" class="btn-secondary">See our workshops →</a>
+    </div>
+  </div>
+  <span class="hero-location">Enschede, NL — 2026</span>
+</section>
+
+<!-- ==================== STUDIO ==================== -->
+<section id="studio">
+  <div class="section-divider">
+    <span class="label">01 — Studio</span>
+  </div>
+  <div class="studio-grid">
+    <div>
+      <h2 class="studio-heading">We treat gastronomy as the serious creative discipline it deserves to be.</h2>
+      <div class="studio-body">
+        <p>DOS KILOS is a creative studio dedicated to gastronomy. We work with chefs, restaurants and food brands to craft visual identities, content and experiences that carry real weight.</p>
+        <p>Our process is deliberate. We take time to understand the story behind every dish, every kitchen, every concept — and translate that into design that communicates with precision and intention.</p>
+        <p>Based in Enschede, the Netherlands. Working globally.</p>
+      </div>
+    </div>
+    <div class="studio-aside">
+      <div class="stat">
+        <span class="stat-number">—</span>
+        <span class="stat-label">Years in gastronomy</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">—</span>
+        <span class="stat-label">Projects completed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">NL</span>
+        <span class="stat-label">Based in Enschede</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WORKSHOPS ==================== -->
+<section id="workshops">
+  <div class="section-divider">
+    <span class="label">02 — Workshops</span>
+    <div class="workshops-intro">
+      <p>Hands-on sessions for chefs, restaurateurs and food entrepreneurs. Practical tools — not theory.</p>
+    </div>
+  </div>
+  <div class="workshops-grid">
+    <div class="workshop-card">
+      <span class="workshop-number">01</span>
+      <h3 class="workshop-title">Branding for Chefs</h3>
+      <p class="workshop-desc">Build a visual identity that reflects your culinary philosophy. From logo and colour palette to tone of voice and digital presence.</p>
+      <div class="workshop-meta">
+        <span class="workshop-duration">1 day</span>
+        <a href="#contact" class="workshop-link">Enquire →</a>
+      </div>
+    </div>
+    <div class="workshop-card">
+      <span class="workshop-number">02</span>
+      <h3 class="workshop-title">Food Photography</h3>
+      <p class="workshop-desc">Natural light, composition and styling for social content. Learn to shoot your dishes with intention — no expensive gear required.</p>
+      <div class="workshop-meta">
+        <span class="workshop-duration">Half day</span>
+        <a href="#contact" class="workshop-link">Enquire →</a>
+      </div>
+    </div>
+    <div class="workshop-card">
+      <span class="workshop-number">03</span>
+      <h3 class="workshop-title">Concept Development</h3>
+      <p class="workshop-desc">From idea to tangible concept. For restaurants and food entrepreneurs who want to build something with a real creative foundation.</p>
+      <div class="workshop-meta">
+        <span class="workshop-duration">2 days</span>
+        <a href="#contact" class="workshop-link">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact">
+  <div class="section-divider">
+    <span class="label">03 — Contact</span>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <h2>Let's build something worth eating.</h2>
+      <p>Whether you're starting from scratch or refining an existing concept, we'd love to hear from you.</p>
+      <div class="contact-details">
+        <div>
+          <span class="contact-item-label">Email</span>
+          <a href="mailto:info@doskilos.com" class="contact-item-value">info@doskilos.com</a>
+        </div>
+        <div>
+          <span class="contact-item-label">Location</span>
+          <span class="contact-item-value">Enschede, Netherlands</span>
+        </div>
+        <div>
+          <span class="contact-item-label">Response time</span>
+          <span class="contact-item-value">Within 48 hours</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">I'm looking for</label>
+        <select id="subject" name="subject" required>
+          <option value="" disabled selected>— Select —</option>
+          <option value="branding">Branding & Identity</option>
+          <option value="content">Content & Photography</option>
+          <option value="workshop">Workshop</option>
+          <option value="direction">Creative Direction</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="submit-btn">Send message →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-left">
+    <a href="#hero" class="nav-logo">
+      <svg width="22" height="18" viewBox="0 0 90 80">
+        <circle cx="32" cy="38" r="24" fill="#F5F0E8"/>
+        <circle cx="64" cy="48" r="15" fill="#E8920A"/>
+      </svg>
+      <span class="nav-wordmark" style="font-size: 11px; letter-spacing: 4px;">DOS KILOS</span>
+    </a>
+    <span class="footer-copy">© 2026 DOS KILOS — Enschede, NL. All rights reserved.</span>
+  </div>
+  <div class="footer-right">
+    <a href="#studio" class="footer-link">Studio</a>
+    <a href="#workshops" class="footer-link">Workshops</a>
+    <a href="#contact" class="footer-link">Contact</a>
+    <a href="mailto:info@doskilos.com" class="footer-link">Email</a>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('mobile-close').addEventListener('click', closeMobileMenu);
+
+  // Form submit handler (placeholder — connect to your backend or Formspree)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const original = btn.textContent;
+    btn.textContent = 'Sent ✓';
+    btn.style.background = 'var(--saffron)';
+    btn.style.color = 'var(--espresso)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+
+</body>
+</html>

@@ -908,7 +908,7 @@
         </div>
       </div>
     </div>
-    <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mreadgng" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name</label>
@@ -982,7 +982,6 @@
 
   // Form submit handler (placeholder — connect to your backend or Formspree)
   function handleSubmit(e) {
-    e.preventDefault();
     const btn = document.getElementById('submit-btn');
     const original = btn.textContent;
     btn.textContent = 'Sent ✓';

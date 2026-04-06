@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOS KILOS — Creative Studio for Gastronomy</title>
-  <meta name="description" content="DOS KILOS is a creative studio for gastronomy. Branding, content and creative direction for chefs and food businesses. Based in Enschede, NL.">
+  <title>DOS KILOS. Creative Studio for Gastronomy</title>
+  <meta name="description" content="DOS KILOS is a creative studio for gastronomy. Consultancy, workshops and private dining. Based in Enschede, NL.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Albert+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -312,8 +312,8 @@
 
     .studio-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 96px;
+      grid-template-columns: 1fr;
+      gap: 48px;
       align-items: start;
     }
 
@@ -334,43 +334,41 @@
       color: var(--espresso);
       margin-bottom: 20px;
       opacity: 0.75;
+      max-width: 680px;
     }
 
     .studio-body p:last-child {
       margin-bottom: 0;
     }
 
-    .studio-aside {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-top: 1px solid rgba(46, 31, 15, 0.1);
+    .studio-offerings {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(46, 31, 15, 0.1);
+      margin-top: 72px;
     }
 
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 36px 0;
-      border-bottom: 1px solid rgba(46, 31, 15, 0.1);
+    .offering {
+      background: var(--parchment);
+      padding: 40px 36px;
     }
 
-    .stat-number {
+    .offering-title {
       font-family: 'Hanken Grotesk', sans-serif;
-      font-weight: 300;
-      font-size: 52px;
+      font-weight: 500;
+      font-size: 20px;
       color: var(--espresso);
-      line-height: 1;
-      letter-spacing: -1px;
+      margin-bottom: 14px;
     }
 
-    .stat-label {
+    .offering-desc {
       font-family: 'Albert Sans', sans-serif;
       font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--stone);
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--espresso);
+      opacity: 0.65;
     }
 
     /* ——— WORKSHOPS ——— */
@@ -479,12 +477,12 @@
 
     /* ——— CONTACT ——— */
     #contact {
-      background: var(--parchment);
-      color: var(--espresso);
+      background: var(--espresso);
+      color: var(--parchment);
     }
 
     #contact .section-divider {
-      border-bottom: 1px solid rgba(46, 31, 15, 0.1);
+      border-bottom: 1px solid rgba(245, 240, 232, 0.08);
     }
 
     #contact .label {
@@ -503,7 +501,7 @@
       font-weight: 600;
       font-size: clamp(28px, 3vw, 44px);
       line-height: 1.1;
-      color: var(--espresso);
+      color: var(--parchment);
       margin-bottom: 24px;
     }
 
@@ -512,8 +510,7 @@
       font-weight: 300;
       font-size: 16px;
       line-height: 1.75;
-      color: var(--espresso);
-      opacity: 0.65;
+      color: var(--stone);
       margin-bottom: 56px;
     }
 
@@ -538,7 +535,7 @@
       font-family: 'Albert Sans', sans-serif;
       font-weight: 300;
       font-size: 16px;
-      color: var(--espresso);
+      color: var(--parchment);
       text-decoration: none;
       transition: color 0.2s ease;
     }
@@ -580,12 +577,12 @@
     .form-group select {
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(46, 31, 15, 0.15);
+      border-bottom: 1px solid rgba(245, 240, 232, 0.15);
       padding: 12px 0;
       font-family: 'Albert Sans', sans-serif;
       font-weight: 300;
       font-size: 15px;
-      color: var(--espresso);
+      color: var(--parchment);
       outline: none;
       transition: border-color 0.2s ease;
       width: 100%;
@@ -603,7 +600,7 @@
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      border-bottom-color: var(--espresso);
+      border-bottom-color: var(--parchment);
     }
 
     .form-group textarea {
@@ -617,15 +614,15 @@
     }
 
     .form-group select:valid {
-      color: var(--espresso);
+      color: var(--parchment);
     }
 
     .form-submit {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: var(--espresso);
-      color: var(--parchment);
+      background: var(--saffron);
+      color: var(--espresso);
       border: none;
       padding: 16px 32px;
       font-family: 'Hanken Grotesk', sans-serif;
@@ -639,8 +636,7 @@
     }
 
     .form-submit:hover {
-      background: var(--saffron);
-      color: var(--espresso);
+      background: var(--sand);
     }
 
     /* ——— FOOTER ——— */
@@ -724,6 +720,10 @@
         gap: 56px;
       }
 
+      .studio-offerings {
+        grid-template-columns: 1fr;
+      }
+
       .workshops-grid {
         grid-template-columns: 1fr;
       }
@@ -793,7 +793,6 @@
     </svg>
   </button>
   <a href="#studio" onclick="closeMobileMenu()">Studio</a>
-  <a href="#workshops" onclick="closeMobileMenu()">Workshops</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
@@ -808,7 +807,6 @@
   </a>
   <ul class="nav-links">
     <li><a href="#studio">Studio</a></li>
-    <li><a href="#workshops">Workshops</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <button class="menu-btn" id="menu-btn" aria-label="Open menu">
@@ -824,81 +822,39 @@
   <div>
     <p class="hero-eyebrow">Creative studio for gastronomy</p>
     <h1 class="hero-tagline">Ideas with weight.<br>Work with <em>purpose.</em></h1>
-    <p class="hero-sub">Branding, content and creative direction for chefs, restaurants and food businesses.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Get in touch →</a>
-      <a href="#workshops" class="btn-secondary">See our workshops →</a>
+      <a href="#studio" class="btn-secondary">See what happens here →</a>
     </div>
   </div>
-  <span class="hero-location">Enschede, NL — 2026</span>
+  <span class="hero-location">Enschede, NL. 2025</span>
 </section>
 
 <!-- ==================== STUDIO ==================== -->
 <section id="studio">
   <div class="section-divider">
-    <span class="label">01 — Studio</span>
+    <span class="label">Studio</span>
   </div>
   <div class="studio-grid">
     <div>
-      <h2 class="studio-heading">We treat gastronomy as the serious creative discipline it deserves to be.</h2>
+      <h2 class="studio-heading">A studio built around food.<br>From the idea to the table.</h2>
       <div class="studio-body">
-        <p>DOS KILOS is a creative studio dedicated to gastronomy. We work with chefs, restaurants and food brands to craft visual identities, content and experiences that carry real weight.</p>
-        <p>Our process is deliberate. We take time to understand the story behind every dish, every kitchen, every concept — and translate that into design that communicates with precision and intention.</p>
-        <p>Based in Enschede, the Netherlands. Working globally.</p>
-      </div>
-    </div>
-    <div class="studio-aside">
-      <div class="stat">
-        <span class="stat-number">—</span>
-        <span class="stat-label">Years in gastronomy</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">—</span>
-        <span class="stat-label">Projects completed</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">NL</span>
-        <span class="stat-label">Based in Enschede</span>
+        <p>DOS KILOS is a place where chefs, food entrepreneurs and curious individuals come to think, learn and create.</p>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ==================== WORKSHOPS ==================== -->
-<section id="workshops">
-  <div class="section-divider">
-    <span class="label">02 — Workshops</span>
-    <div class="workshops-intro">
-      <p>Hands-on sessions for chefs, restaurateurs and food entrepreneurs. Practical tools — not theory.</p>
+  <div class="studio-offerings">
+    <div class="offering">
+      <h3 class="offering-title">Consultancy</h3>
+      <p class="offering-desc">For those building or refining a food concept. We help shape the vision. The story, the identity, the philosophy behind what you're making.</p>
     </div>
-  </div>
-  <div class="workshops-grid">
-    <div class="workshop-card">
-      <span class="workshop-number">01</span>
-      <h3 class="workshop-title">Branding for Chefs</h3>
-      <p class="workshop-desc">Build a visual identity that reflects your culinary philosophy. From logo and colour palette to tone of voice and digital presence.</p>
-      <div class="workshop-meta">
-        <span class="workshop-duration">1 day</span>
-        <a href="#contact" class="workshop-link">Enquire →</a>
-      </div>
+    <div class="offering">
+      <h3 class="offering-title">Workshops</h3>
+      <p class="offering-desc">Focused sessions on specific topics. From baking and cooking to food with kids. In the studio or online. One subject, explored properly.</p>
     </div>
-    <div class="workshop-card">
-      <span class="workshop-number">02</span>
-      <h3 class="workshop-title">Food Photography</h3>
-      <p class="workshop-desc">Natural light, composition and styling for social content. Learn to shoot your dishes with intention — no expensive gear required.</p>
-      <div class="workshop-meta">
-        <span class="workshop-duration">Half day</span>
-        <a href="#contact" class="workshop-link">Enquire →</a>
-      </div>
-    </div>
-    <div class="workshop-card">
-      <span class="workshop-number">03</span>
-      <h3 class="workshop-title">Concept Development</h3>
-      <p class="workshop-desc">From idea to tangible concept. For restaurants and food entrepreneurs who want to build something with a real creative foundation.</p>
-      <div class="workshop-meta">
-        <span class="workshop-duration">2 days</span>
-        <a href="#contact" class="workshop-link">Enquire →</a>
-      </div>
+    <div class="offering">
+      <h3 class="offering-title">Private Dining</h3>
+      <p class="offering-desc">An experience that brings everything together at the table. Good food, with intention.</p>
     </div>
   </div>
 </section>
@@ -906,7 +862,7 @@
 <!-- ==================== CONTACT ==================== -->
 <section id="contact">
   <div class="section-divider">
-    <span class="label">03 — Contact</span>
+    <span class="label">Contact</span>
   </div>
   <div class="contact-grid">
     <div class="contact-intro">
@@ -921,13 +877,10 @@
           <span class="contact-item-label">Location</span>
           <span class="contact-item-value">Enschede, Netherlands</span>
         </div>
-        <div>
-          <span class="contact-item-label">Response time</span>
-          <span class="contact-item-value">Within 48 hours</span>
-        </div>
+
       </div>
     </div>
-    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mreadgng" method="POST">
+    <form class="contact-form" id="contact-form">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name</label>
@@ -939,19 +892,18 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="subject">I'm looking for</label>
+        <label for="subject">I'm interested in</label>
         <select id="subject" name="subject" required>
-          <option value="" disabled selected>— Select —</option>
-          <option value="branding">Branding & Identity</option>
-          <option value="content">Content & Photography</option>
+          <option value="" disabled selected>Select</option>
+          <option value="consultancy">Consultancy</option>
           <option value="workshop">Workshop</option>
-          <option value="direction">Creative Direction</option>
+          <option value="private-dining">Private Dining</option>
           <option value="other">Something else</option>
         </select>
       </div>
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+        <textarea id="message" name="message" placeholder="Tell us about what you're looking for..." required></textarea>
       </div>
       <button type="submit" class="form-submit" id="submit-btn">Send message →</button>
     </form>
@@ -968,11 +920,10 @@
       </svg>
       <span class="nav-wordmark" style="font-size: 11px; letter-spacing: 4px;">DOS KILOS</span>
     </a>
-    <span class="footer-copy">© 2026 DOS KILOS — Enschede, NL. All rights reserved.</span>
+    <span class="footer-copy">© 2026 DOS KILOS. Enschede, NL.</span>
   </div>
   <div class="footer-right">
     <a href="#studio" class="footer-link">Studio</a>
-    <a href="#workshops" class="footer-link">Workshops</a>
     <a href="#contact" class="footer-link">Contact</a>
     <a href="mailto:info@doskilos.com" class="footer-link">Email</a>
   </div>
@@ -999,22 +950,49 @@
 
   document.getElementById('mobile-close').addEventListener('click', closeMobileMenu);
 
-  // Form submit handler (placeholder — connect to your backend or Formspree)
-  function handleSubmit(e) {
+  // Form submit handler
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
     const btn = document.getElementById('submit-btn');
     const original = btn.textContent;
-    btn.textContent = 'Sent ✓';
-    btn.style.background = 'var(--saffron)';
-    btn.style.color = 'var(--espresso)';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3500);
-  }
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value
+    };
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (response.ok) {
+        btn.textContent = 'Sent ✓';
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+        }, 3500);
+      } else {
+        btn.textContent = 'Error. Try again';
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+        }, 3500);
+      }
+    }).catch(() => {
+      btn.textContent = 'Error. Try again';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 3500);
+    });
+  });
 </script>
 
 </body>

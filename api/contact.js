@@ -43,8 +43,8 @@ module.exports = async function handler(req, res) {
           <p style="font-size: 15px; line-height: 1.75; margin: 0 0 20px; color: #2E1F0F;">Thank you for your message. I'll read it carefully and get back to you.</p>
           <p style="font-size: 15px; line-height: 1.75; margin: 0 0 20px; color: #2E1F0F;">In the meantime, if anything else comes to mind, feel free to reply to this email.</p>
           <p style="font-size: 15px; line-height: 1.75; margin: 0 0 24px; color: #2E1F0F;">Nacho de Andrés</p>
-          <a href="https://www.doskilos.com" style="text-decoration: none;">
-            <img src="https://www.doskilos.com/lockup.png" alt="DOS KILOS" width="160" style="display: block;" />
+          <a href="https://www.doskilos.com" style="text-decoration: none; color: #2E1F0F;">
+            <img src="https://www.doskilos.com/lockup.png" alt="DOS KILOS" width="160" style="display: block; border: 0; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; letter-spacing: 3px; color: #2E1F0F;" />
           </a>
         </div>
       `

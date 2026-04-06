@@ -74,11 +74,11 @@
     #studio { background: var(--parchment); color: var(--espresso); }
     #studio .section-divider { border-bottom: 1px solid rgba(46, 31, 15, 0.1); }
     #studio .label { color: var(--saffron); }
-    .studio-content { display: grid; grid-template-columns: 1fr 0.6fr; gap: 72px; align-items: start; }
+    .studio-content { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start; }
     .studio-heading { font-family: 'Hanken Grotesk', sans-serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 48px); line-height: 1.15; color: var(--espresso); margin-bottom: 40px; }
     .studio-body p { font-family: 'Albert Sans', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.8; color: var(--espresso); margin-bottom: 20px; opacity: 0.75; max-width: 680px; }
     .studio-body p:last-child { margin-bottom: 0; }
-    .studio-portrait { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .contact-portrait { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; margin-bottom: 32px; }
     .studio-offerings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(46, 31, 15, 0.1); margin-top: 72px; }
     .offering { background: var(--parchment); padding: 40px 36px; }
     .offering-title { font-family: 'Hanken Grotesk', sans-serif; font-weight: 500; font-size: 20px; color: var(--espresso); margin-bottom: 14px; }
@@ -135,7 +135,6 @@
       .hero-location { display: none; }
       section { padding: 80px 24px; }
       .studio-content { grid-template-columns: 1fr; gap: 48px; }
-      .studio-portrait { max-width: 320px; }
       .studio-offerings { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 56px; }
       .form-row { grid-template-columns: 1fr; }
@@ -212,7 +211,6 @@
         <p data-en="DOS KILOS is a place where chefs, food entrepreneurs and curious individuals come to think, learn and create." data-nl="DOS KILOS is een plek waar koks, food-ondernemers en nieuwsgierige mensen samenkomen om te denken, te leren en te maken.">DOS KILOS is a place where chefs, food entrepreneurs and curious individuals come to think, learn and create.</p>
       </div>
     </div>
-    <img src="/nacho.jpg" alt="Nacho de Andrés" class="studio-portrait fade-in">
   </div>
   <div class="studio-offerings">
     <div class="offering fade-in">
@@ -231,13 +229,14 @@
 </section>
 
 <!-- TEXTURE DIVIDER -->
-<img src="/texture.jpeg" alt="" class="texture-divider" role="presentation">
+<img src="/texture.jpg" alt="" class="texture-divider" role="presentation">
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-divider"><span class="label">Contact</span></div>
   <div class="contact-grid">
     <div class="contact-intro fade-in">
+      <img src="/nacho.jpg" alt="Nacho de Andrés" class="contact-portrait fade-in">
       <h2 data-en="Let's build something worth eating." data-nl="Laten we iets maken dat de moeite waard is.">Let's build something worth eating.</h2>
       <p data-en="Whether you're starting from scratch or refining an existing concept, we'd love to hear from you." data-nl="Of je nu vanaf nul begint of een bestaand concept aanscherpt, we horen graag van je.">Whether you're starting from scratch or refining an existing concept, we'd love to hear from you.</p>
       <div class="contact-details">

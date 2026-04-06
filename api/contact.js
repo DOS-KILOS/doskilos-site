@@ -42,21 +42,21 @@ module.exports = async function handler(req, res) {
     await resend.emails.send({
       from: 'DOS KILOS <info@doskilos.com>',
       to: email,
-      subject: isNL ? 'Ik heb je bericht ontvangen' : 'I received your message',
+      subject: isNL ? 'We hebben je bericht ontvangen' : 'We received your message',
       html: '<div style="font-family:Helvetica,Arial,sans-serif;max-width:520px;margin:0 auto;background:#F5F0E8;">' +
         '<div style="padding:40px 40px 32px;">' +
         '<p style="font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">Hi ' + name + ',</p>' +
         '<p style="font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">' +
         (isNL
-          ? 'Bedankt voor je bericht. Ik lees het rustig door en neem zo snel mogelijk contact met je op.'
-          : "Thank you for your message. I'll read it carefully and get back to you.") +
+          ? 'Bedankt voor je bericht. We lezen het rustig door en nemen zo snel mogelijk contact met je op.'
+          : "Thank you for your message. We'll read it carefully and get back to you.") +
         '</p>' +
         '<p style="font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">' +
         (isNL
           ? 'Mocht je in de tussentijd nog iets te binnen schieten, reageer gerust op deze mail.'
           : 'In the meantime, if anything else comes to mind, feel free to reply to this email.') +
         '</p>' +
-        '<p style="font-size:15px;line-height:1.75;margin:0;color:#2E1F0F;">Nacho de Andr\u00e9s</p>' +
+        '<p style="font-size:15px;line-height:1.75;margin:0;color:#2E1F0F;">DOS KILOS</p>' +
         '</div>' + lockupHtml + '</div>'
     });
 

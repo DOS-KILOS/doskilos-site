@@ -1,8 +1,8 @@
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -35,27 +35,6 @@ export default async function handler(req, res) {
     // Confirmation to sender
     await resend.emails.send({
       from: 'DOS KILOS <info@doskilos.com>',
-      to: email,
-      subject: 'I received your message',
-      html: `
-        <div style="font-family: Helvetica, Arial, sans-serif; max-width: 520px; margin: 0 auto; padding: 40px; background: #F5F0E8;">
-          <p style="font-size: 15px; line-height: 1.75; margin: 0 0 20px; color: #2E1F0F;">Hi ${name},</p>
-          <p style="font-size: 15px; line-height: 1.75; margin: 0 0 20px; color: #2E1F0F;">Thank you for your message. I'll read it carefully and get back to you.</p>
-          <p style="font-size: 15px; line-height: 1.75; margin: 0 0 20px; color: #2E1F0F;">In the meantime, if anything else comes to mind, feel free to reply to this email.</p>
-          <p style="font-size: 15px; line-height: 1.75; margin: 0 0 24px; color: #2E1F0F;">Nacho de Andrés</p>
-          <a href="https://www.doskilos.com" style="text-decoration: none;">
-            <img src="https://www.doskilos.com/lockup.png" alt="DOS KILOS" width="160" style="display: block;" />
-          </a>
-        </div>
-      `
-    });
-
-    return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Email error:', error);
-    return res.status(500).json({ error: 'Failed to send email' });
-  }
-}      from: 'DOS KILOS <info@doskilos.com>',
       to: email,
       subject: 'I received your message',
       html: `

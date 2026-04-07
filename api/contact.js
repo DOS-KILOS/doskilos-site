@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
     '<body style="margin:0;padding:0;background-color:#F5F0E8;" bgcolor="#F5F0E8">' +
     '<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F0E8" style="background-color:#F5F0E8;">' +
     '<tr><td align="center">' +
-    '<table width="520" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F0E8" style="background-color:#F5F0E8;max-width:520px;">' +
+    '<table width="520" border="0" cellpadding="0" cellspacing="0" style="max-width:520px;">' +
     '<tr><td bgcolor="#F5F0E8" style="background-color:#F5F0E8;padding:40px 40px 32px;">' +
     bodyContent +
     '</td></tr>' +
@@ -70,7 +70,7 @@ module.exports = async function handler(req, res) {
         '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">' +
         (isNL
           ? 'Bedankt voor je bericht. We lezen het rustig door en nemen zo snel mogelijk contact met je op.'
-          : "Thank you for your message. We'll read it carefully and get back to you.") +
+          : 'Thank you for your message. We will read it carefully and get back to you.') +
         '</p>' +
         '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0;color:#2E1F0F;">' +
         (isNL

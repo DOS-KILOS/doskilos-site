@@ -163,9 +163,30 @@
       .hero-eyebrow { margin-bottom: 24px; }
       .hero-actions { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
+    /* Cookie banner */
+    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--espresso); border-top: 1px solid rgba(245, 240, 232, 0.08); padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; z-index: 300; }
+    .cookie-banner p { font-family: 'Albert Sans', sans-serif; font-weight: 300; font-size: 13px; color: var(--stone); line-height: 1.6; flex: 1; }
+    .cookie-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    .cookie-accept { background: var(--saffron); color: var(--espresso); border: none; font-family: 'Hanken Grotesk', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 20px; cursor: pointer; transition: background 0.2s ease; }
+    .cookie-accept:hover { background: var(--sand); }
+    .cookie-decline { background: none; color: var(--stone); border: 1px solid rgba(245, 240, 232, 0.15); font-family: 'Hanken Grotesk', sans-serif; font-weight: 400; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 20px; cursor: pointer; transition: border-color 0.2s ease; }
+    .cookie-decline:hover { border-color: var(--stone); }
+    @media (max-width: 960px) {
+      .cookie-banner { flex-direction: column; padding: 20px 24px; align-items: flex-start; }
+      .cookie-btns { width: 100%; }
+    }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYCPL14N63"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VYCPL14N63');</script>
+  <script>
+  function loadGA(){
+    var s=document.createElement('script');
+    s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-VYCPL14N63';
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());gtag('config','G-VYCPL14N63');
+  }
+  try{if(localStorage.getItem('doskilos-cookies')==='accepted')loadGA()}catch(e){}
+  </script>
 </head>
 <body>
 
@@ -316,10 +337,18 @@
     <a href="#studio" class="footer-link">Studio</a>
     <a href="#contact" class="footer-link">Contact</a>
     <a href="mailto:info@doskilos.com" class="footer-link">Email</a>
-    <a href="https://www.instagram.com/doskilos" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+    <a href="https://www.instagram.com/dos.kilos" target="_blank" rel="noopener" class="footer-link">Instagram</a>
     <a href="https://www.tiktok.com/@doskilos" target="_blank" rel="noopener" class="footer-link">TikTok</a>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookie-banner" style="display:none;" data-en-text="This website uses cookies for analytics. We do not track you for advertising." data-nl-text="Deze website gebruikt cookies voor analytics. We volgen je niet voor advertenties.">
+  <p id="cookie-text">This website uses cookies for analytics. We do not track you for advertising.</p>
+  <div class="cookie-btns">
+    <button class="cookie-accept" id="cookie-accept" data-en="Accept" data-nl="Accepteren">Accept</button>
+    <button class="cookie-decline" id="cookie-decline" data-en="Decline" data-nl="Weigeren">Decline</button>
+  </div>
+</div>
 
 <script>
 var nav=document.getElementById('main-nav');
@@ -336,6 +365,8 @@ function setLang(lang){
   document.querySelectorAll('[data-'+lang+']').forEach(function(el){el.innerHTML=el.getAttribute('data-'+lang)});
   document.querySelectorAll('[data-'+lang+'-placeholder]').forEach(function(el){el.placeholder=el.getAttribute('data-'+lang+'-placeholder')});
   document.querySelectorAll('select option[data-'+lang+']').forEach(function(opt){opt.textContent=opt.getAttribute('data-'+lang)});
+  var cb=document.getElementById('cookie-banner');
+  if(cb){var ct=document.getElementById('cookie-text');if(ct)ct.textContent=cb.getAttribute('data-'+lang+'-text')}
   try{localStorage.setItem('doskilos-lang',lang)}catch(e){}
 }
 try{var saved=localStorage.getItem('doskilos-lang');if(saved&&saved!=='en')setLang(saved)}catch(e){}
@@ -355,6 +386,18 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
     if(r.ok){btn.textContent=lang==='nl'?'Verstuurd ✓':'Sent ✓';form.reset();document.getElementById('form-lang').value=lang;setTimeout(function(){btn.textContent=original;btn.disabled=false},3500)}
     else{btn.textContent=lang==='nl'?'Fout. Probeer opnieuw':'Error. Try again';setTimeout(function(){btn.textContent=original;btn.disabled=false},3500)}
   }).catch(function(){btn.textContent=lang==='nl'?'Fout. Probeer opnieuw':'Error. Try again';setTimeout(function(){btn.textContent=original;btn.disabled=false},3500)});
+});
+
+// Cookie consent
+var cookieBanner=document.getElementById('cookie-banner');
+try{if(!localStorage.getItem('doskilos-cookies'))cookieBanner.style.display='flex'}catch(e){cookieBanner.style.display='flex'}
+document.getElementById('cookie-accept').addEventListener('click',function(){
+  try{localStorage.setItem('doskilos-cookies','accepted')}catch(e){}
+  cookieBanner.style.display='none';loadGA();
+});
+document.getElementById('cookie-decline').addEventListener('click',function(){
+  try{localStorage.setItem('doskilos-cookies','declined')}catch(e){}
+  cookieBanner.style.display='none';
 });
 </script>
 </body>

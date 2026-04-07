@@ -13,8 +13,6 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
-  const isNL = lang === 'nl';
-
   var lockupHtml = '<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
     '<td bgcolor="#2E1F0F" style="background-color:#2E1F0F;padding:20px 40px;">' +
     '<a href="https://www.doskilos.com" style="text-decoration:none;">' +
@@ -45,13 +43,27 @@ module.exports = async function handler(req, res) {
     '</body></html>';
   }
 
+  var confirmSubject = { en: 'We received your message', nl: 'We hebben je bericht ontvangen', es: 'Hemos recibido tu mensaje' };
+  var confirmBody = {
+    en: "Thank you for your message. We will read it carefully and get back to you.",
+    nl: "Bedankt voor je bericht. We lezen het rustig door en nemen zo snel mogelijk contact met je op.",
+    es: "Gracias por tu mensaje. Lo leeremos con atención y nos pondremos en contacto contigo."
+  };
+  var confirmMeantime = {
+    en: "In the meantime, if anything else comes to mind, feel free to reply to this email.",
+    nl: "Mocht je in de tussentijd nog iets te binnen schieten, reageer gerust op deze mail.",
+    es: "Si mientras tanto se te ocurre algo más, no dudes en responder a este correo."
+  };
+
+  var l = (lang === 'nl' || lang === 'es') ? lang : 'en';
+
   try {
     await resend.emails.send({
       from: 'DOS KILOS <info@doskilos.com>',
       to: 'info@doskilos.com',
       subject: 'New enquiry: ' + subject,
       html: wrap(
-        '<p style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A89880;margin:0 0 28px;">New enquiry (' + (isNL ? 'NL' : 'EN') + ')</p>' +
+        '<p style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A89880;margin:0 0 28px;">New enquiry (' + l.toUpperCase() + ')</p>' +
         '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 4px;color:#2E1F0F;">' + name + '</p>' +
         '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 4px;color:#A89880;">' + email + '</p>' +
         '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 24px;color:#A89880;">' + subject + '</p>' +
@@ -64,19 +76,11 @@ module.exports = async function handler(req, res) {
     await resend.emails.send({
       from: 'DOS KILOS <info@doskilos.com>',
       to: email,
-      subject: isNL ? 'We hebben je bericht ontvangen' : 'We received your message',
+      subject: confirmSubject[l],
       html: wrap(
         '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">Hi ' + name + ',</p>' +
-        '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">' +
-        (isNL
-          ? 'Bedankt voor je bericht. We lezen het rustig door en nemen zo snel mogelijk contact met je op.'
-          : 'Thank you for your message. We will read it carefully and get back to you.') +
-        '</p>' +
-        '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0;color:#2E1F0F;">' +
-        (isNL
-          ? 'Mocht je in de tussentijd nog iets te binnen schieten, reageer gerust op deze mail.'
-          : 'In the meantime, if anything else comes to mind, feel free to reply to this email.') +
-        '</p>'
+        '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0 0 20px;color:#2E1F0F;">' + confirmBody[l] + '</p>' +
+        '<p style="font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.75;margin:0;color:#2E1F0F;">' + confirmMeantime[l] + '</p>'
       )
     });
 
